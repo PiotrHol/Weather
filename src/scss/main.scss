@@ -1,0 +1,19 @@
+@import './settings/reset.scss';
+@import './settings/fonts.scss';
+@import './settings/colors.scss';
+@import './settings//mixins.scss';
+
+body {
+    font-family: $font-base;
+    color: $color-black;
+    background: $color-bg;
+}
+
+a {
+    text-decoration: none;
+    color: $color-black;
+  
+    &:focus {
+      outline: none;
+    }
+  }
