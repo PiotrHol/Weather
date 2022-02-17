@@ -2,9 +2,18 @@ import React, { useState } from "react";
 import "./login.scss";
 import logo from "../assets/logo.png";
 import { useForm } from "react-hook-form";
+import {
+  getAuth,
+  setPersistence,
+  browserSessionPersistence,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { useHistory } from "react-router-dom";
 
 export const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
+  const [isAuthError, setIsAuthError] = useState(false);
   const {
     register,
     handleSubmit,
@@ -12,9 +21,24 @@ export const Login = () => {
     watch,
     formState: { errors },
   } = useForm();
+  const history = useHistory();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = ({ email, password }) => {
+    const auth = getAuth();
+
+    setPersistence(auth, browserSessionPersistence).then(async () => {
+      try {
+        if (isSignUp) {
+          await createUserWithEmailAndPassword(auth, email, password);
+        } else {
+          await signInWithEmailAndPassword(auth, email, password);
+        }
+
+        history.push("/home");
+      } catch {
+        setIsAuthError(true);
+      }
+    });
   };
 
   return (
@@ -79,6 +103,7 @@ export const Login = () => {
               )}
             </label>
           )}
+          {isAuthError && <p className="login__form-error">Błąd logowania! Spróbuj ponownie!</p>}
           <div className="login__form-buttons">
             <button className="login__form-btn">
               {isSignUp ? "Utwórz konto" : "Zaloguj się"}
