@@ -1,6 +1,7 @@
 import "./scss/main.scss";
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import { PrivateRouter } from "./PrivateRouter";
+import { Login } from "./Login/Login";
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
       <div className="app">
         <Switch>
           <Route exact path="/">
-            Login
+            <Login />
           </Route>
           <PrivateRouter path="/home">Home</PrivateRouter>
           <PrivateRouter path="/setting">Setting</PrivateRouter>
