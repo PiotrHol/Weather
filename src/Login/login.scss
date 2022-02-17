@@ -2,7 +2,7 @@
 
 .login {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -112,6 +112,11 @@
         }
     }
 
+    &__form-error {
+        color: $color-error;
+        padding-bottom: 20px;
+    }
+
     &__form-buttons {
         width: 100%;
         display: flex;
@@ -125,7 +130,7 @@
 
     &__form-btn {
         background: transparent;
-        padding: 10px 15px;
+        padding: 10px 12px;
         border: none;
         border-radius: 8px;
         text-transform: uppercase;
