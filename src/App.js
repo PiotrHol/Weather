@@ -1,10 +1,23 @@
 import "./scss/main.scss";
+import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
+import { PrivateRouter } from "./PrivateRouter";
 
 function App() {
   return (
-    <div className="App">
-      Weather
-    </div>
+    <HashRouter basename="/">
+      <div className="app">
+        <Switch>
+          <Route exact path="/">
+            Login
+          </Route>
+          <PrivateRouter path="/home">Home</PrivateRouter>
+          <PrivateRouter path="/setting">Setting</PrivateRouter>
+          <Route path="*">
+            <Redirect to="/home" />
+          </Route>
+        </Switch>
+      </div>
+    </HashRouter>
   );
 }
 
