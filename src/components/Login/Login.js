@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./login.scss";
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 import { useForm } from "react-hook-form";
 import {
   getAuth,

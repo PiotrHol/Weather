@@ -1,7 +1,7 @@
 import "./scss/main.scss";
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 import { PrivateRouter } from "./PrivateRouter";
-import { Login } from "./Login/Login";
+import { Login } from "./components/Login/Login";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
