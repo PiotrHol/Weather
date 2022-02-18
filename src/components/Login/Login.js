@@ -23,7 +23,7 @@ export const Login = () => {
     formState: { errors },
   } = useForm();
   const history = useHistory();
-  const auth = useSelector(state => state.auth);
+  const auth = useSelector(state => state.auth.id);
 
   useEffect(() => {
     if (auth) {
