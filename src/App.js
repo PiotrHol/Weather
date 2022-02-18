@@ -24,13 +24,15 @@ function App() {
     <HashRouter basename="/">
       <div className="app">
         <Switch>
-          <Route exact path="/">
+          <PrivateRouter exact path="/">
+            Home
+          </PrivateRouter>
+          <PrivateRouter path="/setting">Setting</PrivateRouter>
+          <Route path="/login">
             <Login />
           </Route>
-          <PrivateRouter path="/home">Home</PrivateRouter>
-          <PrivateRouter path="/setting">Setting</PrivateRouter>
           <Route path="*">
-            <Redirect to="/home" />
+            <Redirect to="/" />
           </Route>
         </Switch>
       </div>

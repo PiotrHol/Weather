@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./login.scss";
 import logo from "../assets/logo.png";
 import { useForm } from "react-hook-form";
@@ -10,6 +10,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -22,6 +23,13 @@ export const Login = () => {
     formState: { errors },
   } = useForm();
   const history = useHistory();
+  const auth = useSelector(state => state.auth);
+
+  useEffect(() => {
+    if (auth) {
+      history.push("/");
+    }
+  }, [auth]);
 
   const onSubmit = ({ email, password }) => {
     const auth = getAuth();
@@ -103,7 +111,11 @@ export const Login = () => {
               )}
             </label>
           )}
-          {isAuthError && <p className="login__form-error">Błąd logowania! Spróbuj ponownie!</p>}
+          {isAuthError && (
+            <p className="login__form-error">
+              Błąd logowania! Spróbuj ponownie!
+            </p>
+          )}
           <div className="login__form-buttons">
             <button className="login__form-btn">
               {isSignUp ? "Utwórz konto" : "Zaloguj się"}
