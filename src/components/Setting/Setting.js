@@ -4,7 +4,7 @@ import logo from "../../assets/logo.png";
 import { City } from "../City/City";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { setCity } from "../../redux/actions/cityActions";
+import { addCity } from "../../redux/actions/cityActions";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 
@@ -96,7 +96,7 @@ export const Setting = () => {
                             }
                           });
                           if (cities.length < 6 && valiToAdd) {
-                            dispatch(setCity(listOfCity[index]));
+                            dispatch(addCity(listOfCity[index]));
                           }
                         }}
                       >
