@@ -1,5 +1,6 @@
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import thunkMiddleware from "redux-thunk";
 import { authReducer } from "./reducers/authSlice";
 import { cityReducer } from "./reducers/citySlice";
 
@@ -8,6 +9,8 @@ const rootReducer = combineReducers({
   cities: cityReducer,
 });
 
-const store = createStore(rootReducer, composeWithDevTools());
+const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware))
+
+const store = createStore(rootReducer, composedEnhancer);
 
 export default store;

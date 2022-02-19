@@ -1,6 +1,7 @@
 const typeName = {
-  addCity: "city/getCity",
+  addCity: "city/addCity",
   deleteCity: "city/deleteCity",
+  setCity: "city/setCity",
 };
 
 const addCity = (payload) => {
@@ -17,4 +18,11 @@ const deleteCity = (payload) => {
   };
 };
 
-export { typeName, addCity, deleteCity };
+const setCity = (payload) => {
+  return {
+    type: typeName.setCity,
+    payload,
+  };
+};
+
+export { typeName, addCity, deleteCity, setCity };
