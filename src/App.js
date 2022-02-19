@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getUser } from "./redux/actions/authActions";
 import { Setting } from "./components/Setting/Setting";
+import { fetchData } from "./redux/reducers/citySlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function App() {
     const unsubscribe = onAuthStateChanged(getAuth(), (user) => {
       if (user) {
         dispatch(getUser(user.uid));
+        dispatch(fetchData);
       }
     });
 

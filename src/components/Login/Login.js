@@ -9,6 +9,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -24,12 +25,17 @@ export const Login = () => {
   } = useForm();
   const history = useHistory();
   const auth = useSelector((state) => state.auth.id);
+  const cities = useSelector((state) => state.cities.selected);
 
   useEffect(() => {
     if (auth) {
-      history.push("/");
+      if (cities.length !== 0) {
+        history.push("/");
+      } else {
+        history.push("/setting");
+      }
     }
-  }, [auth]);
+  }, [cities]);
 
   const onSubmit = ({ email, password }) => {
     const auth = getAuth();
@@ -37,12 +43,19 @@ export const Login = () => {
     setPersistence(auth, browserSessionPersistence).then(async () => {
       try {
         if (isSignUp) {
-          await createUserWithEmailAndPassword(auth, email, password);
+          const userCredential = await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+          await setDoc(doc(getFirestore(), "users", userCredential.user.uid), {
+            cities: [],
+          });
+          history.push("/setting");
         } else {
           await signInWithEmailAndPassword(auth, email, password);
+          history.push("/home");
         }
-
-        history.push("/home");
       } catch {
         setIsAuthError(true);
       }
