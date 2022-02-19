@@ -23,7 +23,7 @@ export const Login = () => {
     formState: { errors },
   } = useForm();
   const history = useHistory();
-  const auth = useSelector(state => state.auth.id);
+  const auth = useSelector((state) => state.auth.id);
 
   useEffect(() => {
     if (auth) {
@@ -61,10 +61,10 @@ export const Login = () => {
             <p>Email:</p>
             <input
               {...register("email", {
-                required: "Proszę podać poprawny adres email!",
+                required: "Please enter a valid email address!",
                 pattern: {
                   value: /\S+@\S+\.\S+/,
-                  message: "Podany email jest nieprawidłowy!",
+                  message: "The specified email is invalid!",
                 },
               })}
               className="login__form-input"
@@ -75,13 +75,13 @@ export const Login = () => {
             )}
           </label>
           <label className="login__form-label">
-            <p>Hasło:</p>
+            <p>Password:</p>
             <input
               {...register("password", {
-                required: "Proszę podać hasło!",
+                required: "Please enter a password!",
                 minLength: {
                   value: 8,
-                  message: "Podane hasło jest za krótkie!",
+                  message: "The password given is too short!",
                 },
               })}
               className="login__form-input"
@@ -93,13 +93,13 @@ export const Login = () => {
           </label>
           {isSignUp && (
             <label className="login__form-label">
-              <p>Powtórz hasło:</p>
+              <p>Repeat password:</p>
               <input
                 {...register("repeatedPassword", {
-                  required: "Ponownie wporwadź hasło!",
+                  required: "Re-enter your password!",
                   validate: (value) =>
                     value === watch("password") ||
-                    "Podane hasła nie są takie same!",
+                    "The passwords given are not the same!",
                 })}
                 className="login__form-input"
                 type="password"
@@ -112,13 +112,11 @@ export const Login = () => {
             </label>
           )}
           {isAuthError && (
-            <p className="login__form-error">
-              Błąd logowania! Spróbuj ponownie!
-            </p>
+            <p className="login__form-error">Login error! Try again!</p>
           )}
           <div className="login__form-buttons">
             <button className="login__form-btn">
-              {isSignUp ? "Utwórz konto" : "Zaloguj się"}
+              {isSignUp ? "Create" : "Log in"}
             </button>
             <button
               type="button"
@@ -128,7 +126,7 @@ export const Login = () => {
                 setIsSignUp((prev) => !prev);
               }}
             >
-              {isSignUp ? "Wróć" : "Załóż konto"}
+              {isSignUp ? "Return" : "Sign up"}
             </button>
           </div>
         </form>
