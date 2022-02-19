@@ -9,7 +9,12 @@ const cityReducer = (state = initialState, { type, payload }) => {
     case typeName.setCity:
       return {
         ...state,
-        city: [...state.city, payload],
+        selected: [...state.selected, payload],
+      };
+    case typeName.deleteCity:
+      return {
+        ...state,
+        selected: state.selected.filter((city) => city.name !== payload),
       };
     default:
       return state;
