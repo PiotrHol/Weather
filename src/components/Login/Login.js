@@ -51,10 +51,8 @@ export const Login = () => {
           await setDoc(doc(getFirestore(), "users", userCredential.user.uid), {
             cities: [],
           });
-          history.push("/setting");
         } else {
           await signInWithEmailAndPassword(auth, email, password);
-          history.push("/home");
         }
       } catch {
         setIsAuthError(true);
