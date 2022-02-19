@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getUser } from "./redux/actions/authActions";
+import { Setting } from "./components/Setting/Setting";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,7 +28,9 @@ function App() {
           <PrivateRouter exact path="/">
             Home
           </PrivateRouter>
-          <PrivateRouter path="/setting">Setting</PrivateRouter>
+          <PrivateRouter path="/setting">
+            <Setting />
+          </PrivateRouter>
           <Route path="/login">
             <Login />
           </Route>
