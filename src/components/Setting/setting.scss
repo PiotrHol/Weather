@@ -164,6 +164,7 @@
     background: $color-bg;
     font-size: 16px;
     font-family: $font-base;
+    cursor: pointer;
 
     @include mediaDesktop {
       font-size: 18px;

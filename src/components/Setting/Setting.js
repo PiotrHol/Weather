@@ -7,13 +7,17 @@ import { useDispatch } from "react-redux";
 import { addCity } from "../../redux/actions/cityActions";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
+import { getFirestore, doc, updateDoc, arrayUnion } from "firebase/firestore";
+import { useHistory } from "react-router-dom";
 
 export const Setting = () => {
   const cities = useSelector((state) => state.cities.selected);
+  const auth = useSelector((state) => state.auth.id);
   const [mainList, setMainList] = useState([]);
   const [listOfCity, setListOfCity] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     fetch("city.list.json", {
@@ -40,7 +44,7 @@ export const Setting = () => {
   }, [searchInput]);
 
   const handleBackBtn = () => {
-    console.log("Back");
+    history.push("/");
   };
 
   return (
@@ -53,8 +57,8 @@ export const Setting = () => {
         <div className="setting__selected-city">
           <h3 className="setting__title">Selected cities: (Click to delete)</h3>
           <div className="setting__selected-city-wrapper">
-            {cities.map(({ id, name }) => (
-              <City key={id} name={name} />
+            {cities.map((city) => (
+              <City key={city.id} city={city} />
             ))}
           </div>
         </div>
@@ -85,20 +89,25 @@ export const Setting = () => {
                     const currentCity = listOfCity[index].name;
                     let valiToAdd = true;
 
+                    const handleClick = async () => {
+                      cities.forEach((city) => {
+                        if (city.name === currentCity) {
+                          valiToAdd = false;
+                        }
+                      });
+                      if (cities.length < 6 && valiToAdd) {
+                        dispatch(addCity(listOfCity[index]));
+                        await updateDoc(doc(getFirestore(), "users", auth), {
+                          cities: arrayUnion(listOfCity[index]),
+                        });
+                      }
+                    };
+
                     return (
                       <div
                         className="setting__list-item"
                         style={style}
-                        onClick={() => {
-                          cities.forEach((city) => {
-                            if (city.name === currentCity) {
-                              valiToAdd = false;
-                            }
-                          });
-                          if (cities.length < 6 && valiToAdd) {
-                            dispatch(addCity(listOfCity[index]));
-                          }
-                        }}
+                        onClick={handleClick}
                       >
                         {listOfCity[index].name}
                       </div>
