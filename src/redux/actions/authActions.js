@@ -1,5 +1,6 @@
 const typeName = {
   userSetting: "auth/getUser",
+  userRemove: "auth/removeUser",
 };
 
 const getUser = (payload) => {
@@ -9,4 +10,10 @@ const getUser = (payload) => {
   };
 };
 
-export { typeName, getUser };
+const removeUser = () => {
+  return {
+    type: typeName.userRemove,
+  };
+};
+
+export { typeName, getUser, removeUser };

@@ -11,6 +11,11 @@ const authReducer = (state = initialState, { type, payload }) => {
         ...state,
         id: payload,
       };
+    case typeName.userRemove:
+      return {
+        ...state,
+        id: null,
+      };
     default:
       return state;
   }
