@@ -1,0 +1,87 @@
+@import "../../scss/main.scss";
+
+.home-header {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px 15px;
+
+    @include mediaTablet {
+        width: 85%;
+    }
+
+    @include mediaDesktop {
+        width: 95%;
+        padding: 20px 30px;
+    }
+
+    &__icon {
+        color: $color-title;
+        width: 20px;
+        height: 20px;
+        border: 1px solid $color-title;
+        border-radius: 50%;
+        padding: 8px;
+        cursor: pointer;
+
+        &:hover {
+            color: $color-white;
+            background: $color-title;
+        }
+
+        &--setting {
+            @include mediaTablet {
+                order: -1;
+            }
+        }
+
+        @include mediaTablet {
+            width: 25px;
+            height: 25px;
+        }
+
+        @include mediaDesktop {
+            width: 30px;
+            height: 30px;
+            padding: 12px;
+            border-width: 2px;
+        }
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+    }
+
+    &__title {
+        font-family: $font-logo;
+        font-size: 30px;
+
+        @include mediaTablet {
+            font-size: 36px;
+        }
+
+        @include mediaDesktop {
+            font-size: 50px;
+        }
+    }
+
+    &__img {
+        width: 60px;
+        height: 60px;
+        margin-right: 10px;
+
+        @include mediaDesktop {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+
+        @include mediaMax {
+            margin-right: 30px;
+        }
+    }
+}
