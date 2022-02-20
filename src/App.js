@@ -8,6 +8,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getUser } from "./redux/actions/authActions";
 import { Setting } from "./components/Setting/Setting";
 import { fetchData } from "./redux/reducers/citySlice";
+import { Home } from "./components/Home/Home";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function App() {
       <div className="app">
         <Switch>
           <PrivateRouter exact path="/">
-            Home
+            <Home />
           </PrivateRouter>
           <PrivateRouter path="/setting">
             <Setting />
