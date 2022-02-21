@@ -1,0 +1,209 @@
+@import "../../scss/main.scss";
+
+.weather {
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 5px $color-border;
+    border: 1px solid $color-border;
+    background: $color-weather-bg;
+    color: $color-title;
+
+    @include mediaDesktop {
+        margin: 20px 0;
+    }
+
+    @include mediaMax {
+        display: flex;
+        margin: 30px 0;
+    }
+
+    &__main {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        margin: 0 auto;
+        
+        @include mediaTablet {
+            width: 400px;
+        }
+
+        @include mediaDesktop {
+            width: 500px;
+            padding: 30px 0 40px;
+        }
+
+        @include mediaMax {
+            width: 40%;
+            padding: 30px 20px 40px;
+        }
+    }
+
+    &__main-title {
+        font-family: $font-btn;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+        font-size: 22px;
+
+        @include mediaDesktop {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+    }
+
+    &__main-weather {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    &__main-icon {
+        background: $color-white;
+        border-radius: 50%;
+
+    }
+
+    &__main-img {
+        width: 100px;
+        height: 100px;
+
+        @include mediaDesktop {
+            width: 150px;
+            height: 150px;
+        }
+    }
+
+    &__main-value {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+    }
+
+    &__main-head {
+        font-size: 32px;
+        font-weight: 800;
+        margin-bottom: 30px;
+
+        @include mediaDesktop {
+            font-size: 46px;
+        }
+    }
+
+    &__main-text {
+        font-weight: 500;
+        font-size: 16px;
+
+        &--feels {
+            padding-bottom: 8px;
+
+            @include mediaDesktop {
+                padding-bottom: 12px;
+            }
+        }
+
+        @include mediaDesktop {
+            font-size: 18px;
+        }
+    }
+
+    &__details {
+        width: 100%;
+        border-top: 1px solid $color-white;
+        border-radius: 0 0 8px 8px;
+        background: $color-weather-detail-bg;
+        color: $color-weather-text;
+        padding: 20px;
+        font-family: $font-logo;
+        font-size: 22px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include mediaDesktop {
+            flex-direction: row;
+            justify-content: space-around;
+            font-size: 24px;
+            padding: 30px 20px;
+        }
+
+        @include mediaMax {
+            width: 60%;
+            border-top: none;
+            border-left: 1px solid $color-white;
+            border-radius: 0 8px 8px 0;
+            padding: 20px 15px;
+        }
+    }
+
+    &__column {
+        width: 100%;
+
+        @include mediaTablet {
+            width: 380px;
+        }
+
+        @include mediaDesktop {
+            width: 300px;
+        }
+
+        @include mediaMax {
+            width: 48%;
+            padding: 0 10px;
+        }
+    }
+
+    &__details-text {
+        padding: 6px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &:nth-child(2n) {
+            color: $color-bg;
+        }
+
+        @include mediaDesktop {
+            padding: 10px 0;
+        }
+
+        @include mediaMax {
+            padding: 15px 0;
+        }
+    }
+
+    &__details-value {
+        display: inline-block;
+        font-family: $font-base;
+        font-size: 18px;
+        font-weight: 700;
+        margin-left: 10px;
+        word-wrap: break-word;
+
+        @include mediaDesktop {
+            font-size: 20px;
+        }
+    }
+
+    &__details-arrow {
+        margin-left: 10px;
+    }
+
+    &__loading {
+        font-size: 32px;
+        text-align: center;
+        margin: 30px 0;
+
+        @include mediaDesktop {
+            font-size: 42px;
+            margin: 40px 0;
+        }
+
+        @include mediaMax {
+            width: 100%;
+        }
+    }
+}
