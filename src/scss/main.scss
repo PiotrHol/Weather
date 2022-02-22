@@ -6,7 +6,8 @@
 body {
   font-family: $font-base;
   color: $color-text;
-  background: $color-bg;
+  background: url("../assets/background.jpg");
+  background-size: cover;
 }
 
 .app {
