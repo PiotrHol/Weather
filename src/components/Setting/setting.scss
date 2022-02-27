@@ -126,6 +126,18 @@
     }
   }
 
+  &__loading {
+    text-align: center;
+    margin-top: 20px;
+    color: $color-header;
+    font-family: $font-logo;
+    font-size: 26px;
+
+    @include mediaMax {
+      font-size: 32px;
+    }
+  }
+
   &__btn {
     background: $color-white;
     border: 1px solid $color-title;

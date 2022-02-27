@@ -77,45 +77,49 @@ export const Setting = () => {
             />
           </form>
           <div className="setting__list">
-            <AutoSizer>
-              {({ height, width }) => (
-                <List
-                  height={height}
-                  width={width}
-                  itemCount={listOfCity.length}
-                  itemSize={50}
-                >
-                  {({ index, style }) => {
-                    const currentCity = listOfCity[index].name;
-                    let valiToAdd = true;
+            {listOfCity.length ? (
+              <AutoSizer>
+                {({ height, width }) => (
+                  <List
+                    height={height}
+                    width={width}
+                    itemCount={listOfCity.length}
+                    itemSize={50}
+                  >
+                    {({ index, style }) => {
+                      const currentCity = listOfCity[index].name;
+                      let valiToAdd = true;
 
-                    const handleClick = async () => {
-                      cities.forEach((city) => {
-                        if (city.name === currentCity) {
-                          valiToAdd = false;
-                        }
-                      });
-                      if (cities.length < 6 && valiToAdd) {
-                        dispatch(addCity(listOfCity[index]));
-                        await updateDoc(doc(getFirestore(), "users", auth), {
-                          cities: arrayUnion(listOfCity[index]),
+                      const handleClick = async () => {
+                        cities.forEach((city) => {
+                          if (city.name === currentCity) {
+                            valiToAdd = false;
+                          }
                         });
-                      }
-                    };
+                        if (cities.length < 6 && valiToAdd) {
+                          dispatch(addCity(listOfCity[index]));
+                          await updateDoc(doc(getFirestore(), "users", auth), {
+                            cities: arrayUnion(listOfCity[index]),
+                          });
+                        }
+                      };
 
-                    return (
-                      <div
-                        className="setting__list-item"
-                        style={style}
-                        onClick={handleClick}
-                      >
-                        {listOfCity[index].name}
-                      </div>
-                    );
-                  }}
-                </List>
-              )}
-            </AutoSizer>
+                      return (
+                        <div
+                          className="setting__list-item"
+                          style={style}
+                          onClick={handleClick}
+                        >
+                          {listOfCity[index].name}
+                        </div>
+                      );
+                    }}
+                  </List>
+                )}
+              </AutoSizer>
+            ) : (
+              <h2 className="setting__loading">Loading ...</h2>
+            )}
           </div>
           <button className="setting__btn" onClick={handleBackBtn}>
             Go to main
