@@ -139,15 +139,18 @@
         font-family: $font-btn;
         letter-spacing: 0.05em;
         font-size: 14px;
+        line-height: 14px;
         color: $color-text;
         background: $color-btn-bg;
 
         @include mediaDesktop {
             font-size: 16px;
+            line-height: 16px;
         }
 
         @include mediaMax {
             font-size: 18px;
+            line-height: 18px;
             padding: 12px 20px;
         }
     }
