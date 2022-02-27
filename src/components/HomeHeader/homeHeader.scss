@@ -58,14 +58,17 @@
 
     &__title {
         font-family: $font-logo;
-        font-size: 30px;
+        font-weight: 700;
+        font-style: italic;
+        font-size: 24px;
+        color: $color-weather-text;
 
         @include mediaTablet {
-            font-size: 36px;
+            font-size: 28px;
         }
 
         @include mediaDesktop {
-            font-size: 50px;
+            font-size: 44px;
         }
     }
 

@@ -30,7 +30,7 @@
   }
 
   &__logo-title {
-    font-family: $font-logo;
+    font-family: $font-head;
     font-size: 40px;
     color: $color-title;
 
@@ -130,7 +130,7 @@
     text-align: center;
     margin-top: 20px;
     color: $color-header;
-    font-family: $font-logo;
+    font-family: $font-head;
     font-size: 26px;
 
     @include mediaMax {

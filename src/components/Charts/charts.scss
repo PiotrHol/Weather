@@ -24,10 +24,10 @@
         margin-bottom: 20px;
         text-align: center;
         font-family: $font-logo;
-        font-size: 24px;
+        font-size: 18px;
 
         @include mediaDesktop {
-            font-size: 32px;
+            font-size: 24px;
         }
     }
 
@@ -36,7 +36,7 @@
     }
 
     &__wait {
-        font-family: $font-logo;
+        font-family: $font-head;
         font-size: 32px;
         padding: 50px;
     }
