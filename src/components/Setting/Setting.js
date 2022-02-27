@@ -44,7 +44,9 @@ export const Setting = () => {
   }, [searchInput]);
 
   const handleBackBtn = () => {
-    history.push("/");
+    if (cities.length) {
+      history.push("/");
+    }
   };
 
   return (
