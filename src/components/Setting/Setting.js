@@ -16,6 +16,7 @@ export const Setting = () => {
   const [mainList, setMainList] = useState([]);
   const [listOfCity, setListOfCity] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [isSelectedCity, setIsSelectedCity] = useState(true);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -46,6 +47,8 @@ export const Setting = () => {
   const handleBackBtn = () => {
     if (cities.length) {
       history.push("/");
+    } else {
+      setIsSelectedCity(false);
     }
   };
 
@@ -58,6 +61,9 @@ export const Setting = () => {
       <div className="setting__content">
         <div className="setting__selected-city">
           <h3 className="setting__title">Selected cities: (Click to delete)</h3>
+          {!isSelectedCity && (
+            <p className="setting__error">You must select at least one city!</p>
+          )}
           <div className="setting__selected-city-wrapper">
             {cities.map((city) => (
               <City key={city.id} city={city} />
@@ -99,6 +105,9 @@ export const Setting = () => {
                           }
                         });
                         if (cities.length < 6 && valiToAdd) {
+                          if (!isSelectedCity) {
+                            setIsSelectedCity(true);
+                          }
                           dispatch(addCity(listOfCity[index]));
                           await updateDoc(doc(getFirestore(), "users", auth), {
                             cities: arrayUnion(listOfCity[index]),

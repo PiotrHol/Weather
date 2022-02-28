@@ -72,6 +72,10 @@
     }
   }
 
+  &__error {
+    color: $color-error;
+  }
+
   &__selected-city {
     width: 100%;
     padding: 10px 0;
