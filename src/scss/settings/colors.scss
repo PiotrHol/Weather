@@ -1,15 +1,33 @@
 $color-black: #000000;
-$color-bg: #F3F3F3;
-$color-white: #FFFFFF;
-$color-border: #E6E6E6;
+$color-bg-app: #a7c7e7;
+$color-bg: #f3f3f3;
+$color-white: #ffffff;
+$color-border: #e6e6e6;
 $color-title: #538a9f;
-$color-text: #3C3C3C;
-$color-header: #8D979B;
-$color-btn-bg: linear-gradient(0deg, rgba(91,192,222,1) 0%, rgba(83,138,159,1) 0%, rgba(91,192,222,1) 100%);
-$color-error: #FF0000;
-$color-weather-bg: linear-gradient(315deg, rgba(72,219,251,1) 0%, rgba(211,211,211,1) 74%);
-$color-weather-detail-bg: linear-gradient(315deg, rgba(0,126,167,1) 0%, rgba(128,206,215,1) 74%);
+$color-text: #3c3c3c;
+$color-header: #8d979b;
+$color-btn-bg: linear-gradient(
+  0deg,
+  rgba(91, 192, 222, 1) 0%,
+  rgba(83, 138, 159, 1) 0%,
+  rgba(91, 192, 222, 1) 100%
+);
+$color-error: #ff0000;
+$color-weather-bg: linear-gradient(
+  315deg,
+  rgba(72, 219, 251, 1) 0%,
+  rgba(211, 211, 211, 1) 74%
+);
+$color-weather-detail-bg: linear-gradient(
+  315deg,
+  rgba(0, 126, 167, 1) 0%,
+  rgba(128, 206, 215, 1) 74%
+);
 $color-weather-text: #636363;
-$color-charts-bg: linear-gradient(0deg, rgba(0,126,167,1) 0%, rgba(128,206,215,1) 74%);
+$color-charts-bg: linear-gradient(
+  0deg,
+  rgba(0, 126, 167, 1) 0%,
+  rgba(128, 206, 215, 1) 74%
+);
 $color-single-chart-bg: rgba(255, 255, 255, 0.85);
 $color-bg-main: rgba(255, 255, 255, 0.9);
