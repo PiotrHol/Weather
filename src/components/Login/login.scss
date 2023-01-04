@@ -1,159 +1,170 @@
 @import "../../scss/main.scss";
 
 .login {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15px;
+
+  &__content {
     width: 100%;
-    min-height: 100vh;
+    background: $color-bg-main;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px $color-border;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include mediaDesktop {
+      width: 500px;
+      padding: 40px;
+    }
+
+    @include mediaMax {
+      width: 700px;
+      padding: 50px 0;
+    }
+  }
+
+  &__logo {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 15px;
 
-    &__content {
-        width: 100%;
-        background: $color-bg-main;
-        border-radius: 10px;
-        box-shadow: 2px 2px 10px $color-border;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        @include mediaDesktop {
-            width: 500px;
-            padding: 40px;
-        }
-
-        @include mediaMax {
-            width: 700px;
-            padding: 50px 0;
-        }
+    @include mediaTablet {
+      width: 80%;
     }
 
-    &__logo {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        @include mediaTablet {
-            width: 80%;
-        }
-
-        @include mediaMax {
-            width: 100%;
-        }
+    @include mediaMax {
+      width: 100%;
     }
 
-    &__logo-img {
-        width: 75px;
-        height: 75px;
-        margin-right: 10px;
+    &-icon {
+      color: $color-white;
+      width: 25px;
+      height: 25px;
 
-        @include mediaTablet {
-            margin-right: 20px;
-        }
+      @include mediaDesktop {
+        width: 35px;
+        height: 35px;
+      }
 
-        @include mediaMax {
-            margin-right: 30px;
-        }
+      @include mediaMax {
+        width: 50px;
+        height: 50px;
+      }
+
+      &-box {
+        margin-right: 20px;
+        background: $color-logo-main;
+        padding: 10px;
+        border-radius: 20px;
+        box-shadow: 0.5px 0.5px 8px 2px $color-title;
+      }
     }
 
-    &__logo-title {
-        font-family: $font-logo;
-        font-weight: 700;
-        font-style: italic;
-        font-size: 26px;
-        color: $color-title;
+    &-title {
+      font-family: $font-logo;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 26px;
+      color: $color-text;
+      -webkit-text-stroke: 3px $color-logo-main;
 
-        @include mediaDesktop {
-            font-size: 32px;
-        }
+      @include mediaDesktop {
+        font-size: 32px;
+      }
 
-        @include mediaMax {
-            font-size: 44px;
-        }
+      @include mediaMax {
+        font-size: 44px;
+      }
+    }
+  }
+
+  &__form {
+    width: 100%;
+    padding-top: 20px;
+
+    @include mediaTablet {
+      width: 80%;
     }
 
-    &__form {
-        width: 100%;
-        padding-top: 20px;
+    @include mediaMax {
+      padding-top: 40px;
+    }
+  }
 
-        @include mediaTablet {
-            width: 80%;
-        }
+  &__form-label {
+    width: 100%;
+    font-size: 14px;
+    color: $color-title;
 
-        @include mediaMax {
-            padding-top: 40px;
-        }
+    @include mediaDesktop {
+      font-size: 18px;
+    }
+  }
+
+  &__form-input {
+    width: 100%;
+    margin: 15px 0;
+    padding: 5px 0;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid $color-border;
+    color: $color-title;
+    background: transparent;
+
+    &:focus {
+      border-color: $color-title;
     }
 
-    &__form-label {
-        width: 100%;
-        font-size: 14px;
-        color: $color-title;
+    @include mediaDesktop {
+      font-size: 18px;
+    }
+  }
 
-        @include mediaDesktop {
-            font-size: 18px;
-        }
+  &__form-error {
+    color: $color-error;
+    padding-bottom: 20px;
+  }
+
+  &__form-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+
+    @include mediaMax {
+      padding-top: 20px;
+    }
+  }
+
+  &__form-btn {
+    background: transparent;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-family: $font-btn;
+    letter-spacing: 0.05em;
+    font-size: 14px;
+    line-height: 14px;
+    color: $color-text;
+    background: $color-btn-bg;
+
+    @include mediaDesktop {
+      font-size: 16px;
+      line-height: 16px;
     }
 
-    &__form-input {
-        width: 100%;
-        margin: 15px 0;
-        padding: 5px 0;
-        font-size: 16px;
-        border: none;
-        border-bottom: 1px solid $color-border;
-        color: $color-title;
-        background: transparent;
-
-        &:focus {
-            border-color: $color-title;
-        }
-
-        @include mediaDesktop {
-            font-size: 18px;
-        }
+    @include mediaMax {
+      font-size: 18px;
+      line-height: 18px;
+      padding: 12px 20px;
     }
-
-    &__form-error {
-        color: $color-error;
-        padding-bottom: 20px;
-    }
-
-    &__form-buttons {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        padding-top: 10px;
-
-        @include mediaMax {
-            padding-top: 20px;
-        }
-    }
-
-    &__form-btn {
-        background: transparent;
-        padding: 10px 12px;
-        border: none;
-        border-radius: 8px;
-        text-transform: uppercase;
-        font-family: $font-btn;
-        letter-spacing: 0.05em;
-        font-size: 14px;
-        line-height: 14px;
-        color: $color-text;
-        background: $color-btn-bg;
-
-        @include mediaDesktop {
-            font-size: 16px;
-            line-height: 16px;
-        }
-
-        @include mediaMax {
-            font-size: 18px;
-            line-height: 18px;
-            padding: 12px 20px;
-        }
-    }
+  }
 }

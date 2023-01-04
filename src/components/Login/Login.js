@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./login.scss";
-import logo from "../../assets/logo.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCloudSun } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 import {
   getAuth,
@@ -64,7 +65,9 @@ export const Login = () => {
     <div className="login">
       <div className="login__content">
         <div className="login__logo">
-          <img className="login__logo-img" src={logo} alt="logo" />
+          <div className="login__logo-icon-box">
+            <FontAwesomeIcon icon={faCloudSun} className="login__logo-icon" />
+          </div>
           <h1 className="login__logo-title">Weather App</h1>
         </div>
         <form className="login__form" onSubmit={handleSubmit(onSubmit)}>
