@@ -111,7 +111,7 @@
     color: $color-title;
 
     @include mediaDesktop {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 
@@ -119,7 +119,7 @@
     width: 100%;
     margin: 15px 0;
     padding: 5px 0;
-    font-size: 16px;
+    font-size: 14px;
     border: none;
     border-bottom: 1px solid $color-border;
     color: $color-title;
@@ -130,13 +130,19 @@
     }
 
     @include mediaDesktop {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 
   &__form-error {
     color: $color-error;
     padding-bottom: 20px;
+    font-weight: 500;
+    font-size: 14px;
+
+    @include mediaDesktop {
+      font-size: 16px;
+    }
   }
 
   &__form-buttons {

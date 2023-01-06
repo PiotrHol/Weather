@@ -17,6 +17,7 @@ import { useSelector } from "react-redux";
 export const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [isAuthError, setIsAuthError] = useState(false);
+  const [isAuthErrorMessage, setIsAuthErrorMessage] = useState("");
   const {
     register,
     handleSubmit,
@@ -38,6 +39,12 @@ export const Login = () => {
     }
   }, [cities]);
 
+  useEffect(() => {
+    if (isAuthError) {
+      setTimeout(() => setIsAuthError(false), 3000);
+    }
+  }, [isAuthError]);
+
   const onSubmit = ({ email, password }) => {
     const auth = getAuth();
 
@@ -55,7 +62,18 @@ export const Login = () => {
         } else {
           await signInWithEmailAndPassword(auth, email, password);
         }
-      } catch {
+      } catch (e) {
+        switch (e.code) {
+          case "auth/user-not-found":
+            setIsAuthErrorMessage("You don't have an account yet. Create one!");
+            break;
+          case "auth/wrong-password":
+            setIsAuthErrorMessage("Incorrect password!");
+            break;
+          default:
+            setIsAuthErrorMessage("Incorrect data!");
+            break;
+        }
         setIsAuthError(true);
       }
     });
@@ -126,7 +144,7 @@ export const Login = () => {
             </label>
           )}
           {isAuthError && (
-            <p className="login__form-error">Login error! Try again!</p>
+            <p className="login__form-error">{isAuthErrorMessage}</p>
           )}
           <div className="login__form-buttons">
             <button className="login__form-btn">
