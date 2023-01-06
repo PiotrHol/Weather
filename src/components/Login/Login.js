@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./login.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudSun } from "@fortawesome/free-solid-svg-icons";
+import { LogButton } from "../LogButton/LogButton";
 import { useForm } from "react-hook-form";
 import {
   getAuth,
@@ -147,19 +148,20 @@ export const Login = () => {
             <p className="login__form-error">{isAuthErrorMessage}</p>
           )}
           <div className="login__form-buttons">
-            <button className="login__form-btn">
-              {isSignUp ? "Create" : "Log in"}
-            </button>
-            <button
+            <LogButton
+              type="submit"
+              text={isSignUp ? "Create" : "Log in"}
+              isAuthError={isAuthError}
+              isValidError={Object.keys(errors).length > 0}
+            />
+            <LogButton
               type="button"
-              className="login__form-btn"
-              onClick={() => {
+              onClickFunction={() => {
                 reset();
                 setIsSignUp((prev) => !prev);
               }}
-            >
-              {isSignUp ? "Return" : "Sign up"}
-            </button>
+              text={isSignUp ? "Return" : "Sign up"}
+            />
           </div>
         </form>
       </div>
