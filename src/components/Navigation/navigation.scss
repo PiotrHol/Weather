@@ -1,12 +1,12 @@
 @import "../../scss/main.scss";
 
 .navigation {
-  background: $color-white;
   border-radius: 20px;
-  box-shadow: 0.5px 0.5px 10px 3px $color-border;
   position: fixed;
   bottom: 15px;
   left: 15px;
+  display: flex;
+  flex-direction: column-reverse;
 
   @include mediaDesktop {
     bottom: 35px;
