@@ -1,13 +1,22 @@
 @import "../../scss/main.scss";
 
 .nav-logo {
-  background: $color-logo-main;
-  padding: 10px;
+  background: $color-white;
+  box-shadow: 0.5px 0.5px 10px 3px $color-border;
   border-radius: 20px;
   cursor: pointer;
+  position: relative;
+  z-index: 2;
+  -webkit-tap-highlight-color: transparent;
 
   &:hover > .nav-logo__icon {
     color: $color-logo-hover;
+  }
+
+  &__content {
+    background: $color-logo-main;
+    padding: 10px;
+    border-radius: 20px;
   }
 
   &__icon {

@@ -6,11 +6,13 @@ import { faCloudSun } from "@fortawesome/free-solid-svg-icons";
 export const NavLogo = ({ setIsShowMenu }) => {
   return (
     <div className="nav-logo">
-      <FontAwesomeIcon
-        icon={faCloudSun}
-        className="nav-logo__icon"
-        onClick={setIsShowMenu}
-      />
+      <div className="nav-logo__content">
+        <FontAwesomeIcon
+          icon={faCloudSun}
+          className="nav-logo__icon"
+          onClick={setIsShowMenu}
+        />
+      </div>
     </div>
   );
 };
