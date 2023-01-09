@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./navigation.scss";
 import { NavLogo } from "../NavLogo/NavLogo";
 import { NavMenu } from "../NavMenu/NavMenu";
 
 export const Navigation = () => {
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => setShowMenu(false), 1500);
+    return () => clearTimeout(timeoutId);
+  }, []);
 
   return (
     <div className="navigation">
