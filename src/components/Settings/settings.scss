@@ -1,0 +1,140 @@
+@import "../../scss/main.scss";
+
+.setting {
+  width: 100%;
+  height: 68vh;
+  background: transparent;
+
+  &__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    @include mediaDesktop {
+      flex-direction: row-reverse;
+      align-items: flex-start;
+    }
+
+    @include mediaMax {
+      width: 80%;
+      margin: 0 auto;
+    }
+  }
+
+  &__title {
+    color: $color-text;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 10px 0;
+
+    @include mediaDesktop {
+      font-size: 20px;
+    }
+  }
+
+  &__error {
+    color: $color-error;
+    margin-top: 10px;
+  }
+
+  &__selected-city {
+    width: 100%;
+    padding: 10px 0;
+
+    @include mediaDesktop {
+      padding-top: 0;
+      margin-left: 20px;
+      width: 70%;
+    }
+
+    @include mediaMax {
+      margin-left: 40px;
+    }
+  }
+
+  &__selected-city-wrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  &__city {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    @include mediaDesktop {
+      height: 100%;
+    }
+  }
+
+  &__form {
+    width: 100%;
+    display: flex;
+    margin-bottom: 10px;
+
+    @include mediaDesktop {
+      margin: 20px 0;
+    }
+  }
+
+  &__input {
+    flex-grow: 1;
+    font-size: 16px;
+    padding: 5px 0;
+    border: none;
+    border-bottom: 1px solid $color-border;
+    background: transparent;
+
+    @include mediaDesktop {
+      font-size: 18px;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: $color-title;
+    }
+  }
+
+  &__loading {
+    text-align: center;
+    margin-top: 20px;
+    color: $color-header;
+    font-family: $font-head;
+    font-size: 26px;
+
+    @include mediaMax {
+      font-size: 32px;
+    }
+  }
+
+  &__list {
+    margin: 10px 0;
+    flex-grow: 1;
+
+    @include mediaDesktop {
+      height: 100px;
+    }
+  }
+
+  &__list-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    background: $color-bg;
+    font-size: 16px;
+    font-family: $font-base;
+    cursor: pointer;
+
+    @include mediaDesktop {
+      font-size: 18px;
+    }
+
+    &:nth-child(2n) {
+      background: $color-white;
+    }
+  }
+}
