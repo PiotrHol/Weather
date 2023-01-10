@@ -1,0 +1,65 @@
+@import "../../scss/main.scss";
+
+.popup {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    width: 90%;
+    max-height: 80vh;
+    background-color: $color-white;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0.5px 0.5px 10px 3px $color-border;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @include mediaDesktop {
+      width: 70%;
+      padding: 30px 50px 40px;
+    }
+
+    @include mediaMax {
+      width: 70%;
+    }
+  }
+
+  &__close {
+    display: flex;
+    justify-content: flex-end;
+    &-btn {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      transition: transform 1s ease-out;
+
+      &:hover {
+        color: $color-logo-main;
+      }
+
+      @include mediaDesktop {
+        width: 35px;
+        height: 35px;
+      }
+
+      @include mediaMax {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}
