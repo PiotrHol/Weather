@@ -7,14 +7,18 @@ import { addCity } from "../../redux/actions/cityActions";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 import { getFirestore, doc, updateDoc, arrayUnion } from "firebase/firestore";
+import { Container, Draggable } from "react-smooth-dnd";
 
-export const Settings = ({ isSelectedCity, setIsSelectedCity }) => {
-  const cities = useSelector((state) => state.cities.selected);
+export const Settings = ({
+  cities,
+  setCities,
+  isSelectedCity,
+  setIsSelectedCity,
+}) => {
   const auth = useSelector((state) => state.auth.id);
   const [mainList, setMainList] = useState([]);
   const [listOfCity, setListOfCity] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-  // const [isSelectedCity, setIsSelectedCity] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,6 +45,25 @@ export const Settings = ({ isSelectedCity, setIsSelectedCity }) => {
     }
   }, [searchInput]);
 
+  const applyDrag = (citiesArray, dropResult) => {
+    const { removedIndex, addedIndex, payload } = dropResult;
+
+    if (removedIndex === null && addedIndex === null) return citiesArray;
+
+    const result = [...citiesArray];
+    let itemToAdd = payload;
+
+    if (removedIndex !== null) {
+      itemToAdd = result.splice(removedIndex, 1)[0];
+    }
+
+    if (addedIndex !== null) {
+      result.splice(addedIndex, 0, itemToAdd);
+    }
+
+    return result;
+  };
+
   return (
     <div className="setting">
       <div className="setting__content">
@@ -50,9 +73,17 @@ export const Settings = ({ isSelectedCity, setIsSelectedCity }) => {
             <p className="setting__error">You must select at least one city!</p>
           )}
           <div className="setting__selected-city-wrapper">
-            {cities.map((city) => (
-              <City key={city.id} city={city} />
-            ))}
+            <Container
+              dragClass="city--drag"
+              getChildPayload={(index) => cities[index]}
+              onDrop={(e) => setCities((prev) => applyDrag(prev, e))}
+            >
+              {cities.map((city) => (
+                <Draggable key={city.id}>
+                  <City city={city} />
+                </Draggable>
+              ))}
+            </Container>
           </div>
         </div>
         <div className="setting__city">
