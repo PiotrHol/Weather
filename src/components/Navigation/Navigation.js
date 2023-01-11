@@ -3,7 +3,7 @@ import "./navigation.scss";
 import { NavLogo } from "../NavLogo/NavLogo";
 import { NavMenu } from "../NavMenu/NavMenu";
 
-export const Navigation = () => {
+export const Navigation = ({ setShowSettings }) => {
   const [showMenu, setShowMenu] = useState(true);
 
   useEffect(() => {
@@ -14,7 +14,12 @@ export const Navigation = () => {
   return (
     <div className="navigation">
       <NavLogo setIsShowMenu={() => setShowMenu((prev) => !prev)} />
-      <NavMenu className="navigation__menu" isShowMenu={showMenu} />
+      <NavMenu
+        className="navigation__menu"
+        isShowMenu={showMenu}
+        setIsShowMenu={(value) => setShowMenu(value)}
+        setIsShowSettings={setShowSettings}
+      />
     </div>
   );
 };
