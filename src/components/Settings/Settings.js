@@ -8,6 +8,7 @@ import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 import { getFirestore, doc, updateDoc, arrayUnion } from "firebase/firestore";
 import { Container, Draggable } from "react-smooth-dnd";
+import classNames from "classnames";
 
 export const Settings = ({
   cities,
@@ -19,6 +20,7 @@ export const Settings = ({
   const [mainList, setMainList] = useState([]);
   const [listOfCity, setListOfCity] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [isDragCity, setIsDragCity] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -68,12 +70,18 @@ export const Settings = ({
     <div className="setting">
       <div className="setting__content">
         <div className="setting__selected-city">
-          <h3 className="setting__title">Selected cities: (Click to delete)</h3>
+          <h3 className="setting__title">Selected cities: (Drag and drop)</h3>
           {!isSelectedCity && (
             <p className="setting__error">You must select at least one city!</p>
           )}
-          <div className="setting__selected-city-wrapper">
+          <div
+            className={classNames("setting__selected-city-wrapper", {
+              "setting__selected-city-wrapper--drag": isDragCity,
+            })}
+          >
             <Container
+              onDragStart={() => setIsDragCity(true)}
+              onDragEnd={() => setIsDragCity(false)}
               dragClass="city--drag"
               getChildPayload={(index) => cities[index]}
               onDrop={(e) => setCities((prev) => applyDrag(prev, e))}

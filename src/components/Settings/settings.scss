@@ -58,6 +58,14 @@
     flex-direction: column;
     flex-wrap: wrap;
     align-items: flex-start;
+    padding: 0 8px;
+    position: relative;
+    left: -8px;
+
+    &--drag {
+      border: 2px solid $color-logo-main;
+      border-radius: 10px;
+    }
   }
 
   &__city {
