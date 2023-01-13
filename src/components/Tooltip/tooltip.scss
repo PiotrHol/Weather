@@ -1,0 +1,53 @@
+@import "../../scss/main.scss";
+
+.tooltip {
+  width: fit-content;
+  background: $color-white;
+  border-radius: 10px;
+  position: absolute;
+  left: -8px;
+  margin-top: 15px;
+
+  &__content {
+    position: relative;
+    background: $color-logo-main;
+    padding: 8px 10px;
+    border-radius: 10px;
+    color: $color-white;
+
+    &::after {
+      content: "";
+      position: absolute;
+      border-width: 5px;
+      border-style: solid;
+    }
+
+    &--top::after {
+      bottom: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-color: transparent transparent $color-logo-main transparent;
+    }
+
+    &--bottom::after {
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-color: $color-logo-main transparent transparent transparent;
+    }
+
+    &--left::after {
+      top: 50%;
+      right: 100%;
+      margin-top: -5px;
+      border-color: transparent $color-logo-main transparent transparent;
+    }
+
+    &--right::after {
+      top: 50%;
+      left: 100%;
+      margin-top: -5px;
+      border-color: transparent transparent transparent $color-logo-main;
+    }
+  }
+}
