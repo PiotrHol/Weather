@@ -3,7 +3,7 @@ import "./popup.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-export const Popup = ({ isShow, setIsShow, children }) => {
+export const Popup = ({ isShow, onCloseFunction, children }) => {
   if (isShow) {
     return (
       <div className="popup">
@@ -12,7 +12,7 @@ export const Popup = ({ isShow, setIsShow, children }) => {
             <FontAwesomeIcon
               icon={faTimes}
               className="popup__close-btn"
-              onClick={setIsShow}
+              onClick={onCloseFunction}
             />
           </div>
           {children}
