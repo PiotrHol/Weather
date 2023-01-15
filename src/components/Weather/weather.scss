@@ -27,7 +27,7 @@
     }
 
     &--open {
-      border-bottom: 4px solid $color-white;
+      // border-bottom: 4px solid $color-white;
       border-radius: 8px 8px 0 0;
     }
   }
@@ -224,22 +224,38 @@
     margin-left: 10px;
   }
 
-  &__details-btn {
+  &__details-btn-content {
     align-self: center;
-    margin-top: 10px;
-    width: 30px;
-    height: 30px;
-    color: $color-bg;
-    padding: 0 15px;
+    margin-top: 5px;
+    padding: 5px 15px;
+    display: flex;
     cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: $color-bg;
+    transition: 0.5s border-color ease-out;
 
     @include mediaMax {
       align-self: flex-end;
     }
 
+    &:hover {
+      border-color: $color-bg;
+    }
+  }
+
+  &__details-btn {
+    width: 25px;
+    height: 25px;
+    transition: 0.5s transform ease-out;
+
     &--open {
       transform: rotate(180deg);
     }
+  }
+
+  &__details-btn-text {
+    margin-right: 8px;
   }
 
   &__loading {

@@ -13,19 +13,17 @@ export const Weather = ({ id, name }) => {
   const [isCharts, setIsCharts] = useState(false);
 
   useEffect(() => {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${process.env.REACT_APP_API_WEATHER}&units=metric`
-    )
-      .then((response) => response.json())
-      .then((data) => setWeatherData(data));
-
-    const intervalId = setInterval(() => {
+    const fetchData = () => {
       fetch(
         `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${process.env.REACT_APP_API_WEATHER}&units=metric`
       )
         .then((response) => response.json())
         .then((data) => setWeatherData(data));
-    }, 60000);
+    };
+
+    fetchData();
+
+    const intervalId = setInterval(fetchData(), 60000);
 
     return () => clearInterval(intervalId);
   }, []);
@@ -128,13 +126,18 @@ export const Weather = ({ id, name }) => {
                 </p>
               </div>
             </div>
-            <FontAwesomeIcon
-              icon={faAngleDown}
-              className={classNames("weather__details-btn", {
-                "weather__details-btn--open": isCharts,
-              })}
+            <div
+              className="weather__details-btn-content"
               onClick={() => setIsCharts((prev) => !prev)}
-            />
+            >
+              <div className="weather__details-btn-text">More</div>
+              <FontAwesomeIcon
+                icon={faAngleDown}
+                className={classNames("weather__details-btn", {
+                  "weather__details-btn--open": isCharts,
+                })}
+              />
+            </div>
           </div>
         </div>
         {isCharts && <Charts id={id} />}
