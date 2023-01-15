@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./settings.scss";
 import { City } from "../City/City";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { addCity } from "../../redux/actions/cityActions";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
-import { getFirestore, doc, updateDoc, arrayUnion } from "firebase/firestore";
 import { Container, Draggable } from "react-smooth-dnd";
+import { Tooltip } from "../Tooltip/Tooltip";
 import classNames from "classnames";
 
 export const Settings = ({
@@ -16,12 +13,11 @@ export const Settings = ({
   isSelectedCity,
   setIsSelectedCity,
 }) => {
-  const auth = useSelector((state) => state.auth.id);
   const [mainList, setMainList] = useState([]);
   const [listOfCity, setListOfCity] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [isDragCity, setIsDragCity] = useState(false);
-  const dispatch = useDispatch();
+  const [showTooltip, setShowTooltip] = useState(false);
 
   useEffect(() => {
     fetch("city.list.json", {
@@ -66,6 +62,16 @@ export const Settings = ({
     return result;
   };
 
+  const onDragStartHandler = () => {
+    setIsDragCity(true);
+    setShowTooltip(true);
+  };
+
+  const onDragEndHandler = () => {
+    setIsDragCity(false);
+    setShowTooltip(false);
+  };
+
   return (
     <div className="setting">
       <div className="setting__content">
@@ -80,11 +86,12 @@ export const Settings = ({
             })}
           >
             <Container
-              onDragStart={() => setIsDragCity(true)}
-              onDragEnd={() => setIsDragCity(false)}
+              onDragStart={onDragStartHandler}
+              onDragEnd={onDragEndHandler}
               dragClass="city--drag"
               getChildPayload={(index) => cities[index]}
               onDrop={(e) => setCities((prev) => applyDrag(prev, e))}
+              removeOnDropOut={true}
             >
               {cities.map((city) => (
                 <Draggable key={city.id}>
@@ -93,6 +100,12 @@ export const Settings = ({
               ))}
             </Container>
           </div>
+          {showTooltip && (
+            <Tooltip
+              arrowDirection="top"
+              tooltipText="Drag out of the box to remove a city"
+            />
+          )}
         </div>
         <div className="setting__city">
           <h3 className="setting__title">
@@ -132,10 +145,7 @@ export const Settings = ({
                           if (!isSelectedCity) {
                             setIsSelectedCity(true);
                           }
-                          dispatch(addCity(listOfCity[index]));
-                          await updateDoc(doc(getFirestore(), "users", auth), {
-                            cities: arrayUnion(listOfCity[index]),
-                          });
+                          setCities((prev) => [...prev, listOfCity[index]]);
                         }
                       };
 
