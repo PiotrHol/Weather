@@ -1,0 +1,167 @@
+@import "../../scss/main.scss";
+
+.weather-forecast {
+  width: 100%;
+  background: $color-bg;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6px 0;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px $color-shadow;
+
+  @include mediaTablet {
+    width: 370px;
+
+    &:nth-child(2n + 1) {
+      align-self: flex-start;
+    }
+
+    &:nth-child(2n) {
+      align-self: flex-end;
+    }
+  }
+
+  @include mediaDesktop {
+    width: 100%;
+    padding: 10px 20px;
+  }
+
+  &__icon {
+    background: $color-charts-bg;
+    border-radius: 50%;
+    margin-right: 15px;
+
+    @include mediaDesktop {
+      margin-right: 20px;
+    }
+
+    &-img {
+      width: 45px;
+      height: 45px;
+
+      @include mediaDesktop {
+        width: 52px;
+        height: 52px;
+      }
+
+      @include mediaMax {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  }
+
+  &__content {
+    flex: 1;
+
+    @include mediaDesktop {
+      display: flex;
+    }
+
+    &-box {
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      &:first-child {
+        margin-bottom: 10px;
+      }
+
+      @include mediaDesktop {
+        width: 50%;
+
+        &:first-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &__date,
+  &__condition,
+  &__feels,
+  &__temp {
+    width: 50%;
+
+    @include mediaMax {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__title {
+    font-family: $font-head;
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 5px;
+
+    @include mediaDesktop {
+      font-size: 19px;
+    }
+
+    @include mediaMax {
+      font-size: 20px;
+      margin-bottom: 0;
+      margin-right: 7px;
+    }
+  }
+
+  &__value {
+    font-family: $font-base;
+    font-size: 14px;
+    font-weight: 500;
+    color: $color-text;
+
+    @include mediaDesktop {
+      font-size: 16px;
+    }
+  }
+
+  &__date-value {
+    &-date {
+      font-family: $font-head;
+      font-size: 17px;
+      font-weight: 500;
+      margin-bottom: 5px;
+
+      @include mediaDesktop {
+        font-size: 19px;
+      }
+
+      @include mediaMax {
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 0;
+        color: $color-text;
+        margin-right: 5px;
+      }
+    }
+
+    &-hour {
+      font-family: $font-base;
+      font-size: 14px;
+      font-weight: 500;
+      color: $color-text;
+
+      @include mediaDesktop {
+        font-size: 16px;
+      }
+
+      @include mediaMax {
+        font-family: $font-head;
+        font-size: 20px;
+        font-weight: 400;
+      }
+    }
+
+    &-char {
+      display: none;
+
+      @include mediaMax {
+        display: inline;
+      }
+    }
+  }
+}
