@@ -7,6 +7,7 @@
   left: 15px;
   display: flex;
   flex-direction: column-reverse;
+  z-index: 2;
 
   @include mediaDesktop {
     bottom: 35px;
