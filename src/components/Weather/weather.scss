@@ -2,11 +2,8 @@
 
 .weather {
   width: 100%;
-  margin: 10px 0;
+  margin: 15px 0;
   border-radius: 8px;
-  box-shadow: 0 0 5px $color-border;
-  border: 0.5px solid $color-border;
-
   color: $color-title;
 
   @include mediaDesktop {
@@ -20,6 +17,8 @@
   &__wrapper {
     width: 100%;
     border-radius: 8px;
+    border: 0.5px solid $color-border;
+    box-shadow: 0 0 5px $color-border;
     background: $color-weather-bg;
 
     @include mediaMax {
@@ -27,7 +26,6 @@
     }
 
     &--open {
-      // border-bottom: 4px solid $color-white;
       border-radius: 8px 8px 0 0;
     }
   }

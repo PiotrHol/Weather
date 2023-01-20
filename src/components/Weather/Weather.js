@@ -5,12 +5,12 @@ import {
   faLongArrowAltUp,
   faAngleDown,
 } from "@fortawesome/free-solid-svg-icons";
-import { Charts } from "../Charts/Charts";
+import { FiveDaysWeather } from "../FiveDaysWeather/FiveDaysWeather";
 import classNames from "classnames";
 
 export const Weather = ({ id, name }) => {
   const [weatherData, setWeatherData] = useState(null);
-  const [isCharts, setIsCharts] = useState(false);
+  const [isDaysWeather, setIsDaysWeather] = useState(false);
 
   useEffect(() => {
     const fetchData = () => {
@@ -33,7 +33,7 @@ export const Weather = ({ id, name }) => {
       <div className="weather">
         <div
           className={classNames("weather__wrapper", {
-            "weather__wrapper--open": isCharts,
+            "weather__wrapper--open": isDaysWeather,
           })}
         >
           <div className="weather__main">
@@ -62,7 +62,7 @@ export const Weather = ({ id, name }) => {
 
           <div
             className={classNames("weather__details", {
-              "weather__details--open": isCharts,
+              "weather__details--open": isDaysWeather,
             })}
           >
             <div className="weather__details-wrapper">
@@ -128,19 +128,19 @@ export const Weather = ({ id, name }) => {
             </div>
             <div
               className="weather__details-btn-content"
-              onClick={() => setIsCharts((prev) => !prev)}
+              onClick={() => setIsDaysWeather((prev) => !prev)}
             >
               <div className="weather__details-btn-text">More</div>
               <FontAwesomeIcon
                 icon={faAngleDown}
                 className={classNames("weather__details-btn", {
-                  "weather__details-btn--open": isCharts,
+                  "weather__details-btn--open": isDaysWeather,
                 })}
               />
             </div>
           </div>
         </div>
-        {isCharts && <Charts id={id} />}
+        {isDaysWeather && <FiveDaysWeather id={id} />}
       </div>
     );
   } else {
