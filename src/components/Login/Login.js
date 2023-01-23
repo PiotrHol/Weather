@@ -71,6 +71,9 @@ export const Login = () => {
           case "auth/wrong-password":
             setIsAuthErrorMessage("Incorrect password!");
             break;
+          case "auth/email-already-in-use":
+            setIsAuthErrorMessage("An account with this email already exists!");
+            break;
           default:
             setIsAuthErrorMessage("Incorrect data!");
             break;
