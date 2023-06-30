@@ -1,7 +1,7 @@
 $color-black: #000000;
 $color-logo-main: rgba(0, 153, 255, 0.5);
 $color-shadow: #a0a0a0;
-$color-bg-app: #a7c7e7;
+$color-bg-app: rgba(167, 199, 231, 0.5);
 $color-bg: #f3f3f3;
 $color-white: #ffffff;
 $color-border: #e6e6e6;
@@ -15,21 +15,26 @@ $color-btn-bg: linear-gradient(
   rgba(91, 192, 222, 1) 100%
 );
 $color-error: #ff0000;
+$color-weather-bg-mobile: linear-gradient(
+  315deg,
+  rgba(72, 219, 251, 1) 0%,
+  rgba(245, 245, 245, 1) 60%
+);
 $color-weather-bg: linear-gradient(
   315deg,
   rgba(72, 219, 251, 1) 0%,
-  rgba(211, 211, 211, 1) 74%
+  rgba(245, 245, 245, 1) 75%
 );
 $color-weather-detail-bg: linear-gradient(
   315deg,
   rgba(0, 153, 187, 0.75) 0%,
-  rgba(128, 206, 215, 1) 74%
+  rgba(128, 206, 215, 1) 75%
 );
 $color-weather-text: #636363;
 $color-charts-bg: linear-gradient(
   0deg,
   rgba(0, 126, 167, 1) 0%,
-  rgba(128, 206, 215, 1) 74%
+  rgba(128, 206, 215, 1) 75%
 );
 $color-single-chart-bg: rgba(255, 255, 255, 0.85);
 $color-bg-main: rgba(255, 255, 255, 0.8);
