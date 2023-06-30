@@ -19,10 +19,11 @@
     border-radius: 8px;
     border: 0.5px solid $color-border;
     box-shadow: 0 0 5px $color-border;
-    background: $color-weather-bg;
+    background: $color-weather-bg-mobile;
 
     @include mediaMax {
       display: flex;
+      background: $color-weather-bg;
     }
 
     &--open {
@@ -75,6 +76,7 @@
   &__main-icon {
     background: $color-white;
     border-radius: 50%;
+    box-shadow: 0 0 3px $color-title;
   }
 
   &__main-img {
