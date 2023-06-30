@@ -12,7 +12,7 @@
     width: 100%;
     background: $color-bg-main;
     border-radius: 10px;
-    box-shadow: 1px 1px 20px $color-title;
+    box-shadow: 2px 2px 8px rgba(83, 138, 159, 0.6);
     padding: 30px 40px;
     display: flex;
     flex-direction: column;
@@ -69,7 +69,7 @@
         background: $color-logo-main;
         padding: 10px;
         border-radius: 20px;
-        box-shadow: 0.5px 0.5px 8px 2px $color-title;
+        box-shadow: 0.5px 0.5px 6px 1px $color-title;
       }
     }
 
@@ -79,7 +79,7 @@
       font-style: italic;
       font-size: 26px;
       color: $color-text;
-      -webkit-text-stroke: 3px $color-logo-main;
+      // -webkit-text-stroke: 3px $color-logo-main;
 
       @include mediaDesktop {
         font-size: 32px;

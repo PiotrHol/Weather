@@ -38,6 +38,7 @@ export const Login = () => {
         history.push("/setting");
       }
     }
+    // eslint-disable-next-line
   }, [cities]);
 
   useEffect(() => {
